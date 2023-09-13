@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="https://cdn.pic.in.th/file/picinth/1064620379_small.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+    <title>Fast check next innovation สอบปุ๊บ รู้ปั๊บ กาปั๊บ แก้ปุ๊บ</title>
+</head>
+<body>
+    <form id="answersForm">
+    <center>
+        <h1>ระบบกรอกคำตอบของโครงงาน Fast check next innovation สอบปุ๊บ รู้ปั๊บ กาปั๊บ แก้ปุ๊บ</h1>
+        <div >
+            <label>ข้อที่ 1 
+                <select id="answer1" name="answer1">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 2 
+                <select id="answer2" name="answer2">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 3 
+                <select id="answer3" name="answer3">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 4
+                <select id="answer4" name="answer4">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 5 
+                <select id="answer5" name="answer5">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 6 
+                <select id="answer6" name="answer6">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 7 
+                <select id="answer7" name="answer7">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 8 
+                <select id="answer8" name="answer8">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 9 
+                <select id="answer9" name="answer9">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+
+        <div>
+            <label>ข้อที่ 10
+                <select id="answer10" name="answer10">
+                <option value="-">-</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                </select>
+            <label/>
+            <br>
+        </div>
+        <button type="button" id="savebtn" >บันทึกคำตอบ</button>
+        
+    </center>
+</form>
+</body>
+
+<script>
+    document.getElementById("savebtn").addEventListener("click", function() {
+        // รวบรวมค่าจากฟอร์ม HTML
+        var answers = [];
+        for (var i = 1; i <= 10; i++) {
+            var answer = document.getElementById("answer" + i).value;
+            answers.push(answer);
+        }
+        // สร้างข้อมูลสำหรับ Excel
+        var data = [["ข้อที่", "คำตอบ"]];
+        for (var i = 0; i < answers.length; i++) {
+            data.push([i + 1, answers[i]]);
+        }
+      
+        // สร้างไฟล์ Excel
+        var ws = XLSX.utils.aoa_to_sheet(data);
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "คำตอบ");
+        var fileName = "คำตอบ.xlsx";
+      
+        // บันทึกไฟล์ Excel
+        alert("บันทึกไฟล์ " + fileName + " สำเร็จ")
+        XLSX.writeFile(wb, fileName);
+      });
+</script>
+</html>
